@@ -17,8 +17,8 @@ Este repositório foi criado com o objetivo de compartilhar pequenos programas q
 
 Os programas disponíveis aqui podem ser desenvolvidos em diversas linguagens, incluindo, mas não limitados a:
 
-- PHP
 - JavaScript
+- PHP
 - e muitas outras.
 
 ## Licença
@@ -38,6 +38,6 @@ Contribuições são bem-vindas! Se você tiver programas úteis que gostaria de
 ## Diretórios e Programas
 
 1. **`/javascript/`** - Programas em JavaScript.
-2. **`/python/`** - Programas em PHP.
+2. **`/php/`** - Programas em PHP.
 
 Cada diretório contém exemplos específicos e detalhados com instruções para uso e execução.
