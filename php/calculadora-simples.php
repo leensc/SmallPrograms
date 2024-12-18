@@ -11,6 +11,7 @@
             border-collapse: collapse;
             font-family: verdana;
             text-align: center;
+            margin: auto;
         }
         
         caption {
