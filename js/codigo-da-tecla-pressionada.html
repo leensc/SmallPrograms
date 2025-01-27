@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código da Tecla pressionada</title>
+    <style>
+        div {
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        p {
+            width: fit-content;
+            padding: 20px;
+            margin: 30px auto;
+            font-size: 7rem;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Código da Tecla pressionada</h1>
+        <h2>Pressione qualquer Tecla<br>Para ver o <em>keyCode</em></h2>
+        <p id="show-key-code">?</p>
+    </div>
+    <script>
+        // Seleciona o elemento <p> onde o código da tecla será exibido
+        const showKeyCode = document.getElementById('show-key-code');
+
+        // Verifica se há um código de tecla armazenado no localStorage
+        if (localStorage.getItem('key-pressed')) {
+            // Se houver, exibe o código armazenado
+            showKeyCode.innerHTML = localStorage.getItem('key-pressed');
+        } else {
+            // Caso contrário, exibe o caractere "?" como padrão
+            showKeyCode.innerHTML = "?";
+        }
+
+        // Adiciona um evento de escuta para detectar quando uma tecla é pressionada
+        document.body.addEventListener('keydown', function (event) {
+            // Armazena o código da tecla pressionada no localStorage
+            localStorage.setItem('key-pressed', event.keyCode);
+
+            // Atualiza o conteúdo do elemento <p> com o código da tecla
+            showKeyCode.innerHTML = localStorage.getItem('key-pressed');
+        });
+    </script>
+</body>
+</html>
