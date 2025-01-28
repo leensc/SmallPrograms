@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimento suave de personagem</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f0f0f0;
+        }
+
+        #player {
+            width: 100px;
+            height: 100px;
+            background-color: #111111;
+            position: relative;
+        }
+
+        #background {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 2rem;
+            color: #505050;
+        }
+    </style>
+</head>
+<body>
+    <div id="background">
+        <h1>Movimento suave de personagem</h1>
+        <p>
+            Pressione as teclas &larr;, &uarr;, &rarr;, &darr; ou A, W, D e S para movimentar o personagem.
+        </p>
+    </div>
+    <div id="player"></div>
+    <script>
+        const player = document.getElementById("player");
+        let playerX = 0;
+        let playerY = 0;
+        const playerSpeed = 5;
+        const keys = {};
+
+        // Detecta teclas pressionadas
+        document.body.addEventListener("keydown", (event) => {
+            keys[event.key.toLowerCase()] = true;
+        });
+
+        // Detecta teclas soltas
+        document.body.addEventListener("keyup", (event) => {
+            keys[event.key.toLowerCase()] = false;
+        });
+
+        // Função de movimento contínuo
+        function movePlayer() {
+            if (keys["arrowleft"] || keys["a"]) playerX -= playerSpeed; // Esquerda
+            if (keys["arrowup"] || keys["w"]) playerY -= playerSpeed;   // Cima
+            if (keys["arrowright"] || keys["d"]) playerX += playerSpeed; // Direita
+            if (keys["arrowdown"] || keys["s"]) playerY += playerSpeed;  // Baixo
+
+            // Atualiza a posição do jogador
+            player.style.left = `${playerX}px`;
+            player.style.top = `${playerY}px`;
+
+            // Continua o loop de animação
+            requestAnimationFrame(movePlayer);
+        }
+
+        // Inicia o loop
+        movePlayer();
+    </script>
+</body>
+</html>
